@@ -10,6 +10,10 @@ exports.getOverview = catchAsync(async (req, res, next) => {
 
   // 2) Build template
   // 3) Render that template using tour data from 1)
+  // res.status(200).render('overview', {
+  //   title: 'All Tours',
+  //   tours,
+  // });
   res.status(200).render('overview', {
     title: 'All Tours',
     tours,
@@ -28,9 +32,16 @@ exports.getTour = catchAsync(async (req, res, next) => {
 
   // 2) Build template
   // 3) Render template using data from 1)
-  res.status(200).render('tour', {
-    title: `${tour.name} Tour`,
-    tour,
+  // res.status(200).render('tour', {
+  //   title: `${tour.name} Tour`,
+  //   tour,
+  // });
+  // 2) Send JSON response with tour data
+  res.status(200).json({
+    status: 'success',
+    data: {
+      tour,
+    },
   });
 });
 
